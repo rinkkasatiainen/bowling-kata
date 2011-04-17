@@ -22,9 +22,9 @@ Feature: Bowling game
    Scenario: First roll
      Given I have created a new game
       When I roll '6'
-      Then the score is updated to the score card
+      Then the score 1st frame of the Score Card contains '6 '
 
    Scenario: Rolling first frame
      Given I have created a new game
       When I roll '6 / 3'
-      Then I the score of the first frame is 9
+      Then I the score of the 1st frame is 9
