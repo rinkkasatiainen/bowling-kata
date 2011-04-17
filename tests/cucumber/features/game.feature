@@ -4,10 +4,9 @@ Feature: Bowling game
    as a bowler
    I need to be able to input the score of each roll
 
-
    Scenario: Opening the application
      When I start the application
-     Then I the application opens with a welcome note.
+     Then I the application opens with a welcome note "Welcome to Bowling ScoreCard!"
 
    Scenario: Starting a new game
      Given I have the application running
