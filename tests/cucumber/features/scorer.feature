@@ -39,7 +39,7 @@ Feature: Bowling
 	      | 10 | - |
 	      | 9 | 0 |
 	   Then the score of the 1st frame is 29
-	    And the score of the 2nd frame is 49
+	    And the score of the 2nd frame is 48
 	
 	Scenario: All strikes
 	   When I strike only strikes
