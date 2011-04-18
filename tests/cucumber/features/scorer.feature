@@ -10,7 +10,7 @@ Feature: Bowling
 	Scenario: Starting a game
 	   Then the score should be 0
 	
-	Scenario: Calculating a score for the first frame
+	Scenario: Calculating a score after first frame
 	   When I roll 6 pins
 	    And I roll 3 pins
 	   Then the score should be 9

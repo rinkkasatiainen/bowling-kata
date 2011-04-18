@@ -30,48 +30,57 @@ When /^I roll (\d+) pins$/ do |roll|
   When("I roll '#{roll}'")
 end
 
-When /^I roll following pins:$/ do |table|
-  # table is a Cucumber::Ast::Table
-  pending # express the regexp above with the code you wish you had
+When /^I roll following pins:$/ do |roll_table|
+  pending
+  roll_table.hashes.each do |hash|
+    @game.roll( hash['first'] )
+    @game.roll( hash['second'] ) unless hash['second'] == '-'
+  end
 end
 
 When /^I strike only strikes$/ do
-  pending # express the regexp above with the code you wish you had
+  pending
+  (1..12).each do 
+    @game.roll(10)
+  end
 end
 
 Then /^the score (\d+)st frame of the Score Card contains '(.*)'$/ do |frame_number, frame_content|
   rolls_for_frame(frame_number.to_i).should include frame_content
 end
 
-def rolls_for_frame(frame_number)
-  parse_score_card()[:rolls].split("|")[frame_number]  
-end
-
 Then /^I the score of the (\d+)st frame is (\d+)$/ do |frame_number, score|
   score_for_frame(frame_number.to_i).should == score.to_s
 end
 
-def score_for_frame(frame_number)
-  return parse_score_card(){:score}.split("|")[frame_number]  
+Then /^the score should be (\d+)$/ do |expected_score|
+  @game.score.should == expected_score.to_i
 end
 
-def parse_score_card()
+private
+def rolls_for_frame(frame_number)
+  parse_score_card(:rolls)[frame_number]  
+end
+
+def score_for_frame(frame_number)
+  return parse_score_card(:score)[frame_number]  
+end
+
+def parse_score_card(type)
+
   score_card = {}
   score_card_as_string = @output_spy.messages().detect{|str| str.include?('Score Card')}.split("\n")
   score_card[:score] = score_card_as_string[3]
   score_card[:rolls] = score_card_as_string[2]
-  return score_card
+  
+  return score_card[type].extend ScoreCardParser
 end
 
 module ScoreCardParser
   
   def [](frame_number)
-    return 
+    self.split("|")[frame_number] 
   end
   
-end
-
-Then /^the score should be (\d+)$/ do |expected_score|
-  @game.score.should == expected_score.to_i
 end
 
