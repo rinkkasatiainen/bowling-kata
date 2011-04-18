@@ -16,14 +16,12 @@ Given /^I have started a new game$/ do
 end
 
 When /^I roll '(\d+)'$/ do |roll|
-  pending
-  @game.roll(roll)
+  @game.roll(roll.to_i)
 end
 
 When /^I roll '(\d+) \/ (\d+)'$/ do |first, second|
-  pending
-  @game.roll(first)
-  @game.roll(second)
+  @game.roll(first.to_i)
+  @game.roll(second.to_i)
 end
 
 When /^I roll (\d+) pins$/ do |roll|
@@ -31,10 +29,9 @@ When /^I roll (\d+) pins$/ do |roll|
 end
 
 When /^I roll following pins:$/ do |roll_table|
-  pending
   roll_table.hashes.each do |hash|
-    @game.roll( hash['first'] )
-    @game.roll( hash['second'] ) unless hash['second'] == '-'
+    @game.roll( hash['first'].to_i )
+    @game.roll( hash['second'].to_i ) unless hash['second'] == '-'
   end
 end
 
@@ -50,7 +47,7 @@ Then /^the score (\d+)st frame of the Score Card contains '(.*)'$/ do |frame_num
 end
 
 Then /^I the score of the (\d+)st frame is (\d+)$/ do |frame_number, score|
-  score_for_frame(frame_number.to_i).should == score.to_s
+  score_for_frame(frame_number.to_i).should == score.to_i
 end
 
 Then /^the score should be (\d+)$/ do |expected_score|
