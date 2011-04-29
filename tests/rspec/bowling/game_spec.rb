@@ -22,8 +22,8 @@ module Bowling
       (1..4).each do
         game.roll(4)
       end
-      game.score().should == 16
       game.frame(2).score().should == 16
+      game.score().should == 16
     end
     
     it "should calculate one throw after a spare" do

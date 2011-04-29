@@ -3,7 +3,7 @@
 <plist version="1.0">
 <dict>
 	<key>currentDocument</key>
-	<string>tests/cucumber/features/step_definitios/game_steps.rb</string>
+	<string>tests/rspec/bowling/game_spec.rb</string>
 	<key>documents</key>
 	<array>
 		<dict>
@@ -21,34 +21,6 @@
 	<integer>202</integer>
 	<key>metaData</key>
 	<dict>
-		<key>lib/bowling/game.rb</key>
-		<dict>
-			<key>caret</key>
-			<dict>
-				<key>column</key>
-				<integer>7</integer>
-				<key>line</key>
-				<integer>27</integer>
-			</dict>
-			<key>firstVisibleColumn</key>
-			<integer>0</integer>
-			<key>firstVisibleLine</key>
-			<integer>0</integer>
-		</dict>
-		<key>lib/bowling/scorer.rb</key>
-		<dict>
-			<key>caret</key>
-			<dict>
-				<key>column</key>
-				<integer>7</integer>
-				<key>line</key>
-				<integer>3</integer>
-			</dict>
-			<key>firstVisibleColumn</key>
-			<integer>0</integer>
-			<key>firstVisibleLine</key>
-			<integer>0</integer>
-		</dict>
 		<key>tests/cucumber/features/game.feature</key>
 		<dict>
 			<key>caret</key>
@@ -61,49 +33,77 @@
 			<key>firstVisibleColumn</key>
 			<integer>0</integer>
 			<key>firstVisibleLine</key>
-			<integer>0</integer>
+			<integer>3</integer>
 		</dict>
 		<key>tests/cucumber/features/scorer.feature</key>
 		<dict>
 			<key>caret</key>
 			<dict>
 				<key>column</key>
-				<integer>41</integer>
+				<integer>30</integer>
 				<key>line</key>
-				<integer>41</integer>
+				<integer>15</integer>
 			</dict>
 			<key>firstVisibleColumn</key>
 			<integer>0</integer>
 			<key>firstVisibleLine</key>
-			<integer>6</integer>
+			<integer>2</integer>
 		</dict>
 		<key>tests/cucumber/features/step_definitios/game_steps.rb</key>
 		<dict>
 			<key>caret</key>
 			<dict>
 				<key>column</key>
-				<integer>17</integer>
+				<integer>0</integer>
 				<key>line</key>
-				<integer>56</integer>
+				<integer>0</integer>
 			</dict>
 			<key>firstVisibleColumn</key>
 			<integer>0</integer>
 			<key>firstVisibleLine</key>
-			<integer>52</integer>
+			<integer>0</integer>
+		</dict>
+		<key>tests/cucumber/features/step_definitios/scorer_steps.rb</key>
+		<dict>
+			<key>caret</key>
+			<dict>
+				<key>column</key>
+				<integer>36</integer>
+				<key>line</key>
+				<integer>1</integer>
+			</dict>
+			<key>firstVisibleColumn</key>
+			<integer>0</integer>
+			<key>firstVisibleLine</key>
+			<integer>0</integer>
 		</dict>
 		<key>tests/rspec/bowling/game_spec.rb</key>
 		<dict>
 			<key>caret</key>
 			<dict>
 				<key>column</key>
-				<integer>40</integer>
+				<integer>17</integer>
 				<key>line</key>
-				<integer>25</integer>
+				<integer>29</integer>
 			</dict>
 			<key>firstVisibleColumn</key>
 			<integer>0</integer>
 			<key>firstVisibleLine</key>
+			<integer>7</integer>
+		</dict>
+		<key>tests/rspec/bowling/game_ui_spec.rb</key>
+		<dict>
+			<key>caret</key>
+			<dict>
+				<key>column</key>
+				<integer>21</integer>
+				<key>line</key>
+				<integer>15</integer>
+			</dict>
+			<key>firstVisibleColumn</key>
 			<integer>0</integer>
+			<key>firstVisibleLine</key>
+			<integer>5</integer>
 		</dict>
 	</dict>
 	<key>openDocuments</key>
@@ -111,13 +111,13 @@
 		<string>tests/cucumber/features/game.feature</string>
 		<string>tests/cucumber/features/scorer.feature</string>
 		<string>tests/rspec/bowling/game_spec.rb</string>
-		<string>lib/bowling/game.rb</string>
 		<string>tests/cucumber/features/step_definitios/game_steps.rb</string>
-		<string>lib/bowling/scorer.rb</string>
+		<string>tests/rspec/bowling/game_ui_spec.rb</string>
+		<string>tests/cucumber/features/step_definitios/scorer_steps.rb</string>
 	</array>
 	<key>showFileHierarchyDrawer</key>
 	<true/>
 	<key>windowFrame</key>
-	<string>{{205, 80}, {1017, 688}}</string>
+	<string>{{237, 222}, {1017, 541}}</string>
 </dict>
 </plist>
