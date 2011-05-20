@@ -36,7 +36,6 @@ When /^I roll following pins:$/ do |roll_table|
 end
 
 When /^I strike only strikes$/ do
-  pending
   (1..12).each do 
     @game.roll(10)
   end
