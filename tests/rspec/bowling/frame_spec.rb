@@ -60,16 +60,15 @@ module Bowling
     
       it "should know that spare grants 3rd roll" do
         frame = Frame.new().extend TenthFrame
-        frame.roll(5)
-        frame.can_roll?.should == true
-        frame.roll(5)
-        frame.can_roll?.should == true
-        frame.roll(5)
+        3.times do
+          frame.can_roll?.should == true
+          frame.roll(5)
+        end
         frame.can_roll?.should == false
       end
     
       it "should know that can have 3 strikes" do
-        frame= Frame.new().extend TenthFrame
+        frame = Frame.new().extend TenthFrame
         3.times do
           frame.can_roll?.should == true
           frame.roll(10)
@@ -81,12 +80,12 @@ module Bowling
     end
     
     context "with Spares" do
-      
-      it "should know when has spare" do
-        2.times { frame.roll(5) }        
+            
+      it "should know spare" do
+        2.times { frame.roll(5) }
         frame.spare?().should == true
       end
-      
+            
       it "should be able to add a roll to 'sum of rolls' after a spare" do
         2.times { frame.roll(5) }
         frame.can_calculate_score?().should == false
@@ -104,7 +103,7 @@ module Bowling
     
     context "with Strikes" do
       
-      it "should know a strike" do
+      it "should know strike" do
         frame.roll(10)
         frame.strike?().should == true
       end

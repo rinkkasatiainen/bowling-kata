@@ -15,15 +15,16 @@ module Bowling
     end
         
     public
-    def roll( pins )
-      
-      frame( @current_frame ).roll(pins)
+    
+    def roll( pins )  
       (@scored_frame + 1 ... @current_frame).each do
         unless frame(@scored_frame + 1).can_calculate_score?()
           frame(@scored_frame + 1).subsequent_roll(pins)
           calculate_score()
         end
       end
+
+      frame( @current_frame ).roll(pins)
       calculate_score()
       increment_frame_index_if_necessary()
     end 
@@ -37,6 +38,7 @@ module Bowling
     end
     
     private
+        
     def increment_frame_index_if_necessary()
       unless frame( @current_frame ).can_roll?
         @current_frame += 1         

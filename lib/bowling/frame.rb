@@ -23,6 +23,15 @@ module Bowling
     def frame_score()
       return @rolls.inject(0, :+) + @subsequent_rolls.inject(0, :+)
     end
+
+    def spare?()
+      return @rolls.length == 2 && @rolls.inject(0, :+) == 10
+    end    
+    
+    def strike?()
+      return @rolls[0] == 10
+    end
+        
   end
   
   module NormalFrame
@@ -40,14 +49,6 @@ module Bowling
       return @rolls.length == 2 
     end
 
-    def spare?()
-      return @rolls.length == 2 && @rolls.inject(0, :+) == 10
-    end    
-    
-    def strike?()
-      return @rolls.length == 1 && @rolls[0] == 10
-    end
-        
   end
   
   module TenthFrame
@@ -66,7 +67,7 @@ module Bowling
       spare?() && rolls.length < 3       ||
       rolls[0] == 10 && rolls.length < 3
     end
-
+    
     def spare?()
       return @rolls.length == 2 && @rolls.inject(0, :+) == 10
     end    
