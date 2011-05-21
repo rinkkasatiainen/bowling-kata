@@ -14,7 +14,7 @@ Feature: Bowling game
       Then I see the current score card:
         """
         Score Card
-        |  1 |  2 |  3 |  4 |  5 |  6 |  7 |  8 |  9 |  10 |
+        | 1  | 2  | 3  | 4  | 5  | 6  | 7  | 8  | 9  | 10  |
         | -- | -- | -- | -- | -- | -- | -- | -- | -- | --- |
         | -- | -- | -- | -- | -- | -- | -- | -- | -- | --- |
         """
@@ -22,7 +22,7 @@ Feature: Bowling game
    Scenario: First roll
      Given I have created a new game
       When I roll '6'
-      Then the score 1st frame of the Score Card contains '6-'
+      Then the 1st frame of the Score Card contains '6-'
 
    Scenario: Rolling first frame
      Given I have created a new game

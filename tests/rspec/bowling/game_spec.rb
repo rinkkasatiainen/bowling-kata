@@ -37,7 +37,11 @@ module Bowling
         game.print_frame(1)[:rolls].should == "4/"
       end
 
-      it "should calculate spare to total score" 
+      it "should mark spare when first roll is 0" do
+        game.roll(0)
+        game.roll(10)
+        game.print_frame(1)[:rolls].should == "0/"
+      end
     end
     
     context "with strikes" do
@@ -45,12 +49,47 @@ module Bowling
         game.roll(10)
         game.print_frame(1)[:rolls].should == "X"
       end
+      
+
     end
     
     context "Tenth frame" do
+      
+      before(:each) do 
+        9.times { game.roll(10) }
+      end
+      
       it "should mark three possible throws on the tenth frame" do
         game.print_frame(10)[:rolls].should == "---"
         game.print_frame(10)[:score].should == "---"        
+      end
+      
+      it "can throw only two rolls if not spare / strike" do
+        game.roll(1)
+        game.print_frame(10)[:rolls].should == "1--"
+        game.roll(1)
+        game.print_frame(10)[:rolls].should == "11"
+      end
+      
+      it "can throw three rolls if spare" do
+        game.roll(2)
+        game.print_frame(10)[:rolls].should == "2--"
+        game.roll(8)
+        game.print_frame(10)[:rolls].should == "2/-"
+        game.roll(10)
+        game.print_frame(10)[:rolls].should == "2/X"
+      end
+      
+      
+      it "should mark the tenth frame with 3 strikes as XXX" do
+        game.print_frame(10)[:rolls].should == "---"
+        game.roll(10)
+        game.print_frame(10)[:rolls].should == "X--"
+        game.roll(10)
+        game.print_frame(10)[:rolls].should == "XX-"
+        game.roll(10)
+        game.print_frame(10)[:rolls].should == "XXX"
+        game.print_frame(10)[:score].should == "300"
       end
     end
   end

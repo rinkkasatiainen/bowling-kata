@@ -22,11 +22,12 @@ module Bowling
     it "should show the empty score card" do      
       output.should_receive(:puts).with(
 """Score Card
-|  1 |  2 |  3 |  4 |  5 |  6 |  7 |  8 |  9 |  10 |
+| 1  | 2  | 3  | 4  | 5  | 6  | 7  | 8  | 9  | 10  |
 | -- | -- | -- | -- | -- | -- | -- | -- | -- | --- |
 | -- | -- | -- | -- | -- | -- | -- | -- | -- | --- |"""
       )
       application.start()
     end
+
   end
 end

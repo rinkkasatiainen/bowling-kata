@@ -41,12 +41,12 @@ When /^I strike only strikes$/ do
   end
 end
 
-Then /^the score (\d+)st frame of the Score Card contains '(.*)'$/ do |frame_number, frame_content|
-  rolls_for_frame(frame_number.to_i).strip.should == frame_content
+Then /^the (\d+)st frame of the Score Card contains '(.*)'$/ do |frame_number, frame_content|
+  for_frame(:rolls, frame_number.to_i).strip.should == frame_content
 end
 
 Then /^I the score of the (\d+)st frame is (\d+)$/ do |frame_number, score|
-  score_for_frame(frame_number.to_i).strip.should == score
+  for_frame(:score, frame_number.to_i).strip.should == score
 end
 
 Then /^the score should be (\d+)$/ do |expected_score|
@@ -54,19 +54,15 @@ Then /^the score should be (\d+)$/ do |expected_score|
 end
 
 private
-def rolls_for_frame(frame_number)
-  parse_score_card(:rolls)[frame_number]  
-end
-
-def score_for_frame(frame_number)
-  return parse_score_card(:score)[frame_number]  
+def for_frame(type, frame_number)
+  parse_score_card(type)[frame_number]  
 end
 
 def parse_score_card(type)
 
   score_card = {}
-  score_card_as_string = @app.score_card().split("\n")
-#  score_card_as_string = @output_spy.messages().detect{|str| str.include?('Score Card')}.split("\n")
+  @app.score_card()
+  score_card_as_string = @output_spy.messages().last().split("\n")
   score_card[:score] = score_card_as_string[3]
   score_card[:rolls] = score_card_as_string[2]
   

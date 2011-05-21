@@ -63,14 +63,21 @@ module Bowling
     end
     
     def can_roll?()
-      rolls.length < 2                   ||
-      spare?() && rolls.length < 3       ||
+      starts_with_strike? || starts_with_spare? || less_than_2_rolls?
+    end
+    
+    private
+    def starts_with_strike?()
       rolls[0] == 10 && rolls.length < 3
     end
     
-    def spare?()
-      return @rolls.length == 2 && @rolls.inject(0, :+) == 10
-    end    
+    def starts_with_spare?()
+      spare?() && rolls.length < 3
+    end
+    
+    def less_than_2_rolls?()
+      rolls.length < 2
+    end
     
   end
 end
