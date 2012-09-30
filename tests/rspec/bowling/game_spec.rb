@@ -6,19 +6,19 @@ module Bowling
   describe Game do
     let(:game) { Game.new() }
 
-    it "should print empty rolls for empty frame" do
+    it "should print empty details for empty frame" do
       game.print_frame(1)[:rolls].should == "--"
       game.print_frame(1)[:score].should == "--"
       game.print_frame(1)[:frame_number].to_s.should == "1"
     end
     
-    it "should print dash for empty rolls" do
+    it "should print dash for second throw after throwing once" do
       game.roll(3)
       game.print_frame(1)[:rolls].should == "3-"
       game.print_frame(1)[:score].should == "--"
     end
 
-    it "should print frame rolls" do
+    it "should print all rolls from a frame" do
       game.roll(3)
       game.roll(6)
       game.print_frame(1)[:rolls].should == "36"
@@ -31,12 +31,6 @@ module Bowling
     end
 
     context "with spares" do
-      it "should mark spare as slash" do
-        game.roll(4)
-        game.roll(6)
-        game.print_frame(1)[:rolls].should == "4/"
-      end
-
       it "should mark spare when first roll is 0" do
         game.roll(0)
         game.roll(10)
@@ -49,8 +43,6 @@ module Bowling
         game.roll(10)
         game.print_frame(1)[:rolls].should == "X"
       end
-      
-
     end
     
     context "Tenth frame" do
@@ -87,9 +79,9 @@ module Bowling
         game.print_frame(10)[:rolls].should == "X--"
         game.roll(10)
         game.print_frame(10)[:rolls].should == "XX-"
-        game.roll(10)
-        game.print_frame(10)[:rolls].should == "XXX"
-        game.print_frame(10)[:score].should == "300"
+        game.roll(9)
+        game.print_frame(10)[:rolls].should == "XX9"
+        game.print_frame(10)[:score].should == "299"
       end
     end
   end

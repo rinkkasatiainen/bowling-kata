@@ -25,14 +25,14 @@ module Bowling
     
     def score_card()
       score_card ="Score Card\n"
-      score_card += print_frame(:frame_number)
-      score_card += print_frame(:rolls)
-      score_card += print_frame(:score)
+      score_card += print_frame_with(:frame_number)
+      score_card += print_frame_with(:rolls)
+      score_card += print_frame_with(:score)
       @output.puts score_card.chomp!
     end
     
     private
-    def print_frame( item )
+    def print_frame_with( item )
       score_card = ""
       (1...10).each do | frame_number |
         score_card << "| %-3s" % @game.print_frame( frame_number )[item]

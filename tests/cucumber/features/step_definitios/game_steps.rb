@@ -59,7 +59,6 @@ def for_frame(type, frame_number)
 end
 
 def parse_score_card(type)
-
   score_card = {}
   @app.score_card()
   score_card_as_string = @output_spy.messages().last().split("\n")

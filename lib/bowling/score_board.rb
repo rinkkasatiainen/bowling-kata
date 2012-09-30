@@ -8,10 +8,9 @@ module Bowling
       9.times do
         @frames << ((Frame.new()).extend NormalFrame)
       end
+      @frames << ((Frame.new()).extend LastFrame)
       @current_frame = 1
       @scored_frame = 0
-      frame = Frame.new()
-      @frames << (frame.extend TenthFrame)
     end
         
     public
@@ -47,26 +46,10 @@ module Bowling
     
     def calculate_score()
       (@scored_frame ... @current_frame).each do
-        if can_calculate_score?( @scored_frame + 1)
+        if frame(@scored_frame + 1).can_calculate_score?()
           calculate_frame_score()
         end
       end
-    end
-    
-    def can_calculate_score?( frame_index )
-      return ( frame(frame_index).can_calculate_score?() )
-    end
-    
-    def strike?( frame )
-      return frame.rolls[0] == 10
-    end
-    
-    def spare?( frame )
-      return frame.rolls().inject(:+) == 10
-    end
-    
-    def frame_ready?( frame_number )
-      return !(frame( @current_frame ).can_roll?)
     end
     
     def calculate_frame_score() 
@@ -74,7 +57,5 @@ module Bowling
       frame(@scored_frame + 1).score = score_of_previous_frame + frame(@scored_frame + 1).frame_score()
       @scored_frame += 1
     end
-    
   end
-    
 end

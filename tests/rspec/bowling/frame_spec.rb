@@ -9,7 +9,6 @@ module Bowling
   
     let (:frame) { Frame.new().extend NormalFrame }
     
-    
     it "should know the rolls of the frame" do
       frame.roll(2)
       frame.rolls.should == [2]
@@ -51,7 +50,7 @@ module Bowling
     
     context "with 10th frame" do
       it "should know that frame can have two rolls if no spare/strike" do
-        frame = Frame.new().extend TenthFrame
+        frame = Frame.new().extend LastFrame
         frame.roll(5)
         frame.can_roll?.should == true
         frame.roll(4)
@@ -59,7 +58,7 @@ module Bowling
       end
     
       it "should know that spare grants 3rd roll" do
-        frame = Frame.new().extend TenthFrame
+        frame = Frame.new().extend LastFrame
         3.times do
           frame.can_roll?.should == true
           frame.roll(5)
@@ -68,7 +67,7 @@ module Bowling
       end
     
       it "should know that can have 3 strikes" do
-        frame = Frame.new().extend TenthFrame
+        frame = Frame.new().extend LastFrame
         3.times do
           frame.can_roll?.should == true
           frame.roll(10)

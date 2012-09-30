@@ -51,7 +51,7 @@ module Bowling
 
   end
   
-  module TenthFrame
+  module LastFrame
     
     def can_calculate_score?()
       if @rolls.length == 3

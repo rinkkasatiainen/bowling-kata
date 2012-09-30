@@ -37,8 +37,10 @@ module Bowling
       end
 
       it "should calculate total score" do
-        4.times{ score_board.roll(1) }
-        score_board.score().should == 4 
+        10.times do 
+          2.times { score_board.roll(1) }
+        end
+        score_board.score().should == 20 
       end
     end
     

@@ -54,7 +54,7 @@ module Bowling
           rolls[index] = '/'
         elsif roll == 10
           rolls[index] = 'X'      
-        elsif index > 0 && roll + rolls[index - 1] == 10
+        elsif index > 0 && roll + rolls[index - 1].to_i == 10
           rolls[index] = '/'
         else
           rolls[index] = roll
